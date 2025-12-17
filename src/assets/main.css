@@ -1,0 +1,421 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Regular';
+  src: url('/fonts/regular.otf');
+}
+
+@font-face {
+  font-family: 'Medium';
+  src: url('/fonts/medium.otf');
+}
+
+@font-face {
+  font-family: 'SemiBold';
+  src: url('/fonts/semibold.otf');
+}
+
+@font-face {
+  font-family: 'Bold';
+  src: url('/fonts/bold.otf');
+}
+
+* {
+  scrollbar-color: var(--color-dark-100) var(--color-black);
+}
+
+:root {
+  --gradient-color: linear-gradient(to bottom right, #0894ff 0%, #c959dd 34%, #ff2e54 68%, #ff9004);
+}
+
+@theme {
+  --font-regular: 'Regular';
+  --font-medium: 'Medium';
+  --font-semibold: 'SemiBold';
+  --font-bold: 'Bold';
+  --color-primary: #0071e3;
+  --color-dark-100: #86868b;
+  --color-dark-200: #2e2e30;
+  --color-light-100: #adb5bd;
+}
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #000;
+  color: var(--color-dark-100);
+  font-family: var(--font-semibold);
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility flex-between {
+  @apply flex items-center justify-between;
+}
+
+@utility col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+@utility abs-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility h3-semibold {
+  @apply text-dark-100 text-xl font-semibold;
+}
+
+@utility base-semibold {
+  @apply text-dark-100 text-base font-semibold;
+}
+
+@utility small-medium {
+  @apply text-xs font-medium;
+}
+
+@layer components {
+  header {
+    @apply flex-center fixed top-0 left-0 z-50 min-h-[7vh] w-screen bg-black;
+
+    nav {
+      @apply flex-between container mx-auto px-5 2xl:px-0;
+
+      img {
+        @apply cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-0.5;
+
+        button {
+          @apply cursor-pointer border-none bg-transparent outline-none;
+        }
+      }
+
+      ul {
+        @apply flex-center gap-8;
+
+        a {
+          @apply font-regular hidden cursor-pointer text-sm text-white opacity-80 transition-all duration-300 ease-in-out hover:opacity-100 md:block;
+        }
+      }
+    }
+  }
+
+  #hero {
+    @apply col-center mt-40 h-fit lg:mt-20 lg:h-[80vh] 2xl:mt-[7vh];
+
+    div {
+      @apply col-center relative z-10 lg:translate-y-16;
+
+      h1 {
+        @apply font-semibold text-white lg:text-3xl 2xl:text-5xl;
+      }
+
+      img {
+        @apply container mx-auto w-2/3;
+      }
+    }
+
+    video {
+      @apply mx-auto lg:translate-y-5 2xl:translate-y-0;
+    }
+
+    button {
+      @apply bg-primary relative z-10 mt-10 mb-5 cursor-pointer rounded-full px-6 py-2 text-lg font-semibold text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-black lg:mt-0;
+    }
+
+    p {
+      @apply lg:h3-semibold base-semibold;
+    }
+  }
+
+  #product-viewer {
+    @apply relative container mx-auto mt-40 min-h-[93vh] px-5 2xl:px-0;
+
+    h2 {
+      @apply text-3xl font-semibold text-white lg:text-6xl;
+    }
+
+    .controls {
+      @apply absolute bottom-40 left-1/2 z-50 -translate-x-1/2 lg:bottom-40 2xl:bottom-52;
+
+      .info {
+        @apply rounded-lg bg-black/20 px-2 py-1 text-xs text-white;
+      }
+
+      .color-control {
+        @apply flex-between gap-4 rounded-full bg-neutral-800 px-6 py-3;
+
+        div {
+          @apply size-7 cursor-pointer rounded-full;
+        }
+
+        .active {
+          @apply ring-light-100 size-5 ring-5;
+        }
+      }
+
+      .size-control {
+        @apply small-medium flex-between gap-2 rounded-full bg-neutral-800 px-6 py-2.5;
+
+        div {
+          @apply flex-center size-8 cursor-pointer rounded-full bg-white text-black;
+        }
+      }
+    }
+
+    #canvas {
+      @apply relative z-40 !h-[80vh] !w-full lg:!h-dvh;
+    }
+  }
+
+  #showcase {
+    @apply relative;
+
+    .media {
+      @apply relative lg:overflow-hidden;
+
+      video {
+        @apply w-full object-cover object-center;
+      }
+
+      .mask {
+        @apply absolute top-0 h-full lg:-top-20 xl:top-0;
+
+        img {
+          @apply h-full scale-150 lg:scale-100;
+          transform: matrix(80, 0, 0, 80, 0, 0);
+        }
+
+        @media (max-width: 1024px) {
+          img {
+            transform: matrix(1, 0, 0, 1, 0, 0);
+          }
+        }
+      }
+    }
+
+    .content {
+      @apply text-dark-100 relative z-10 my-5 bg-black text-xl font-semibold lg:-mt-40 lg:opacity-0;
+
+      .wrapper {
+        @apply container mx-auto flex flex-col justify-center gap-20 px-5 pb-20 lg:flex-row 2xl:px-0;
+      }
+
+      h2 {
+        @apply text-3xl font-semibold text-white lg:text-7xl;
+      }
+
+      h3 {
+        @apply text-xl font-semibold text-white lg:text-5xl;
+      }
+    }
+  }
+
+  #performance {
+    @apply relative flex h-full w-dvw flex-col items-center overflow-hidden pt-20 lg:pt-20;
+
+    h2 {
+      @apply max-w-2xl text-center text-3xl font-semibold text-white lg:text-6xl;
+    }
+
+    .wrapper {
+      @apply relative h-[50vh] w-7xl lg:h-screen 2xl:w-[100rem];
+
+      img {
+        @apply max-w-40 object-cover object-center lg:max-w-[27rem] 2xl:max-w-[35rem];
+      }
+
+      .p1 {
+        @apply absolute bottom-1/2 left-[23%] z-[1] max-sm:left-[33%];
+      }
+
+      .p2 {
+        @apply absolute right-[17%] bottom-[40%] z-[3] max-sm:right-[37%];
+      }
+
+      .p3 {
+        @apply absolute right-[15%] bottom-1/4 z-[2] max-sm:right-[35%];
+      }
+
+      .p4 {
+        @apply absolute right-[10%] bottom-[15%] z-[1] max-sm:right-[30%];
+      }
+
+      .p5 {
+        @apply absolute bottom-[20%] left-1/2 -translate-x-1/2 scale-150;
+      }
+
+      .p6 {
+        @apply absolute bottom-1/4 left-1/4 z-[2] max-sm:left-[35%];
+      }
+
+      .p7 {
+        @apply absolute bottom-[5%] left-[15%] z-[3] max-sm:left-[35%];
+      }
+    }
+
+    .content {
+      @apply mx-auto mt-24 max-w-xl;
+
+      p {
+        @apply lg:h3-semibold base-semibold translate-y-10 px-5 text-center opacity-0;
+      }
+    }
+  }
+
+  #features {
+    @apply relative pt-40;
+
+    h2 {
+      @apply mx-auto max-w-3xl text-center text-3xl font-semibold text-white lg:text-7xl;
+    }
+
+    #f-canvas {
+      @apply relative z-40 !h-dvh !w-full;
+    }
+
+    .box {
+      @apply absolute max-w-xs;
+
+      p {
+        @apply lg:h3-semibold base-semibold;
+      }
+    }
+  }
+
+  #highlights {
+    @apply container mx-auto max-lg:px-5 lg:py-40;
+
+    h2 {
+      @apply mx-auto max-w-3xl text-center text-3xl font-semibold text-white lg:text-7xl;
+    }
+
+    h3 {
+      @apply mt-10 text-center text-xl font-semibold text-[#F5F5F7] lg:text-3xl;
+    }
+
+    .masonry {
+      @apply mt-20 grid grid-cols-1 gap-5 text-[#F5F5F7] lg:grid-cols-2;
+
+      .left-column {
+        @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
+
+        div:first-of-type {
+          @apply h-full rounded-3xl bg-[url(/highlight-bg.png)] bg-cover bg-no-repeat p-10 lg:pt-20 2xl:pt-32;
+
+          p {
+            @apply max-w-2xs text-4xl font-semibold;
+          }
+        }
+
+        p {
+          @apply max-w-2xs text-4xl font-semibold;
+        }
+
+        div:last-of-type {
+          @apply flex items-center gap-7 rounded-3xl bg-[#1D1D1F] p-10;
+
+          p {
+            @apply font-semibold lg:text-2xl 2xl:text-3xl;
+          }
+        }
+      }
+
+      .right-column {
+        @apply flex -translate-y-5 flex-col justify-between gap-5 opacity-0;
+
+        p {
+          @apply max-w-2xs text-4xl font-semibold;
+        }
+        .apple-gradient {
+          @apply relative flex items-center gap-7 rounded-3xl p-10;
+
+          background: #1d1d1f;
+          background-clip: padding-box; /* !important */
+          border: 3px solid transparent; /* !important */
+
+          ::before {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            inset: 0px;
+            z-index: -1;
+            margin: -5px; /* !important */
+            border-radius: 24px; /* !important */
+            background: linear-gradient(91deg, #0096ff 0%, #bb64ff 42%, #f2416b 74%, #eb7500 100%);
+          }
+
+          p {
+            @apply font-semibold lg:text-2xl 2xl:text-3xl;
+
+            span {
+              background: linear-gradient(
+                91deg,
+                #0096ff 0%,
+                #bb64ff 42%,
+                #f2416b 74%,
+                #eb7500 100%
+              );
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
+
+        div:last-of-type {
+          @apply h-full rounded-3xl bg-[#1D1D1F] p-10 lg:pt-20 2xl:pt-32;
+
+          p {
+            @apply max-w-sm text-4xl font-semibold;
+
+            .green-gradient {
+              background: linear-gradient(90deg, #35a98a 0%, #6dd400 100%);
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    @apply container mx-auto py-7 max-lg:px-5;
+
+    .info {
+      @apply flex-between;
+
+      p {
+        @apply text-sm font-medium;
+
+        span {
+          @apply text-primary mx-0.5;
+        }
+      }
+    }
+
+    hr {
+      @apply my-7 text-[#424245];
+    }
+
+    .links {
+      @apply flex flex-col justify-between gap-5 text-sm max-lg:mt-5 lg:flex-row lg:items-center;
+
+      ul {
+        @apply flex flex-col gap-2.5 lg:flex-row lg:divide-x;
+
+        li {
+          @apply hover:text-primary cursor-pointer transition-all duration-300 ease-in-out lg:px-5;
+        }
+      }
+    }
+  }
+}
