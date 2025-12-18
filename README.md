@@ -1,5 +1,5 @@
 <div align="center">
-<h3 align="center" style="font-size: 2rem; font-weight: bold;">Apple Macbook 網站</h3>
+<h3 align="center">Apple Macbook 網站</h3>
 <img src="https://img.shields.io/badge/-Vue-38B2AC?style=for-the-badge&logo=vue.js&logoColor=white" />
 <img src="https://img.shields.io/badge/-GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" />
 <img src="https://img.shields.io/badge/-Three.js-27136A?style=for-the-badge&logo=three.js&logoColor=white" />
