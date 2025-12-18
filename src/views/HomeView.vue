@@ -1,10 +1,11 @@
 <template>
   <main>
     <NavBar />
-    <h1 class="text-3xl font-bold underline">Home</h1>
+    <HeroSection />
   </main>
 </template>
 
 <script setup>
 import NavBar from '@/components/NavBar.vue'
+import HeroSection from '@/components/HeroSection.vue'
 </script>
