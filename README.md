@@ -1,6 +1,6 @@
 <div align="center">
 <h3 align="center">Apple Macbook 網站</h3>
-<img src="https://img.shields.io/badge/-Vue-38B2AC?style=for-the-badge&logo=vue.js&logoColor=white" />
+<img src="https://img.shields.io/badge/-react-38B2AC?style=for-the-badge&logo=react.js&logoColor=white" />
 <img src="https://img.shields.io/badge/-GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" />
 <img src="https://img.shields.io/badge/-Three.js-27136A?style=for-the-badge&logo=three.js&logoColor=white" />
 <img src="https://img.shields.io/badge/-Tailwind_CSS-58C4DC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
@@ -19,7 +19,7 @@
 
 ## <a name="introduction">✨ 專案介紹</a>
 
-這是一個 **Apple 風格的 3D 產品展示網站**，使用 **Vue、Three.js、GSAP 與 Tailwind CSS** 打造。
+這是一個 **Apple 風格的 3D 產品展示網站**，使用 **React、Three.js、GSAP 與 Tailwind CSS** 打造。
 
 專案重點放在「**視覺體驗與互動感**」，透過沉浸式 3D 場景、隨捲動觸發的動畫效果，以及 pinned 區塊設計，模擬 Apple 官網那種細緻、順暢的瀏覽體驗。
 
@@ -29,7 +29,7 @@
 
 ## <a name="tech-stack">⚙️ 技術棧</a>
 
-- **[Vue](https://vuejs.org/)**
+- **[React](https://reactjs.org/)**
   前端核心框架，負責整體 UI 與元件架構。透過元件化設計，讓動畫邏輯與畫面結構可以清楚拆分，方便維護與擴充，也能順利整合 GSAP 與 Three.js。
 
 - **[GSAP](https://gsap.com/)**
