@@ -28,7 +28,7 @@ const Showcase = () => {
   return (
     <section id="showcase">
       <div className="media">
-        <video src="/videos/game.mp4" autoPlay loop muted playsInline></video>
+        <video src="/videos/game.mp4" autoPlay loop muted playsInline title="MacBook Pro gaming demonstration"></video>
         <div className="mask">
           <img src="/mask-logo.svg" alt="Apple logo mask overlay" />
         </div>
