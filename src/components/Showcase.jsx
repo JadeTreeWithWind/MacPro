@@ -19,7 +19,7 @@ const Showcase = () => {
 
       timeline
         .to(".mask img", {
-          transform: "scale(1.1)",
+          scale: 1.1,
         })
         .to(".content", { opacity: 1, y: 0, ease: "power1.in" });
     }
@@ -30,7 +30,9 @@ const Showcase = () => {
       <div className="media">
         <video src="/videos/game.mp4" autoPlay loop muted playsInline></video>
         <div className="mask">
-          <img src="/mask-logo.svg" alt="" />
+         <div className="mask">
+          <img src="/mask-logo.svg" alt="Apple logo mask overlay" />
+         </div>
         </div>
       </div>
 
