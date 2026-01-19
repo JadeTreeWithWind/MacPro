@@ -66,7 +66,7 @@ const ModelScroll = () => {
     // Content & Texture Sync
     timeline
       .call(() => setTexture("/videos/feature-1.mp4"))
-      .to(".box1", { opacity: 1, y: 0, delay: 1 })
+      .to(".box1", { opacity: 1, y: 0, delay: 0.5 })
 
       .call(() => setTexture("/videos/feature-2.mp4"))
       .to(".box2", { opacity: 1, y: 0 })
