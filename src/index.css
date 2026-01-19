@@ -113,7 +113,7 @@ body {
   }
 
   #hero {
-    @apply col-center mt-40 h-fit lg:mt-20 lg:h-[80vh] 2xl:mt-[7vh];
+    @apply col-center mt-40 h-fit lg:mt-20 lg:h-[80vh] xl:mb-40 2xl:mt-[7vh];
 
     div {
       @apply col-center relative z-10 lg:translate-y-16;
@@ -141,7 +141,7 @@ body {
   }
 
   #product-viewer {
-    @apply relative container mx-auto mt-40 min-h-[93vh] px-5 2xl:px-0;
+    @apply relative container mx-auto mt-40 min-h-[93vh] px-5 xl:mb-40 2xl:px-0;
 
     h2 {
       @apply text-3xl font-semibold text-white lg:text-6xl;
@@ -181,7 +181,7 @@ body {
   }
 
   #showcase {
-    @apply relative;
+    @apply relative xl:mb-40;
 
     .media {
       @apply relative lg:overflow-hidden;
@@ -224,14 +224,14 @@ body {
   }
 
   #performance {
-    @apply relative flex h-full w-dvw flex-col items-center overflow-hidden pt-20 lg:pt-20;
+    @apply relative flex h-full w-dvw flex-col items-center overflow-hidden pt-20 lg:pt-20 xl:mb-40;
 
     h2 {
       @apply max-w-2xl text-center text-3xl font-semibold text-white lg:text-6xl;
     }
 
     .wrapper {
-      @apply relative h-[50vh] w-7xl lg:h-[90vh] 2xl:w-400;
+      @apply relative h-[50vh] w-7xl lg:h-[70vh] 2xl:w-400;
 
       img {
         @apply max-w-40 object-cover object-center lg:max-w-108 2xl:max-w-140;
@@ -299,7 +299,7 @@ body {
     @apply container mx-auto max-lg:px-5 lg:py-40;
 
     h2 {
-      @apply mx-auto max-w-3xl text-center text-3xl font-semibold text-white lg:text-7xl;
+      @apply mx-auto max-w-4xl text-center text-3xl font-semibold text-white lg:text-7xl;
     }
 
     h3 {

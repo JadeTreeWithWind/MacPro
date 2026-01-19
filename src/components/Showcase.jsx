@@ -28,7 +28,14 @@ const Showcase = () => {
   return (
     <section id="showcase">
       <div className="media">
-        <video src="/videos/game.mp4" autoPlay loop muted playsInline title="MacBook Pro gaming demonstration"></video>
+        <video
+          src="/videos/game.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          title="MacBook Pro gaming demonstration"
+        ></video>
         <div className="mask">
           <img src="/mask-logo.svg" alt="Apple logo mask overlay" />
         </div>
@@ -36,8 +43,8 @@ const Showcase = () => {
 
       <div className="content">
         <div className="wrapper">
-          <div className="lg:max-w-md">
-            <h2>M4 晶片，咻咻飛快。</h2>
+          <div className="lg:max-w-3xl">
+            <h2>M4 晶片，咻咻飛快</h2>
 
             <div className="mt-7 space-y-5 pe-10">
               <p>

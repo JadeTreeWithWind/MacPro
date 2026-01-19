@@ -12,7 +12,7 @@ const ProductViewer = () => {
 
   return (
     <section id="product-viewer">
-      <h2>經得起細細看。</h2>
+      <h2>經得起細細看</h2>
       <div className="controls">
         <p className="info">
           Macbook Pro
