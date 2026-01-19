@@ -51,7 +51,7 @@ const Highlights = () => {
             <img src="/battery.png" alt="Battery" />
             <p>
               電池續航最多可 <br />
-              <span className="green-gradient"> 增加 6 小時25 </span>，
+              <span className="green-gradient"> 增加 6 小時 </span>，
               <span className="text-dark-100"> 總時數最長可達 18 小時</span>
             </p>
           </div>
