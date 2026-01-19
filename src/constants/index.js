@@ -123,11 +123,11 @@ const featureSequence = [
 ];
 
 const footerLinks = [
-  { label: "Privacy Policy", link: "#" },
-  { label: "Terms of Use", link: "#" },
-  { label: "Sales Policy", link: "#" },
-  { label: "Legal", link: "#" },
-  { label: "Site Map", link: "#" },
+  { label: "隱私政策", link: "#" },
+  { label: "使用條款", link: "#" },
+  { label: "銷售政策", link: "#" },
+  { label: "法律", link: "#" },
+  { label: "網站地圖", link: "#" },
 ];
 
 export {
