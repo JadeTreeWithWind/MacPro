@@ -65,19 +65,19 @@ const ModelScroll = () => {
 
     // Content & Texture Sync
     timeline
-      .call(() => setTexture("/videos/feature-1.mp4"))
+      .call(() => setTexture("/videos/feature-1.webm"))
       .to(".box1", { opacity: 1, y: 0, delay: 0.5 })
 
-      .call(() => setTexture("/videos/feature-2.mp4"))
+      .call(() => setTexture("/videos/feature-2.webm"))
       .to(".box2", { opacity: 1, y: 0 })
 
-      .call(() => setTexture("/videos/feature-3.mp4"))
+      .call(() => setTexture("/videos/feature-3.webm"))
       .to(".box3", { opacity: 1, y: 0 })
 
-      .call(() => setTexture("/videos/feature-4.mp4"))
+      .call(() => setTexture("/videos/feature-4.webm"))
       .to(".box4", { opacity: 1, y: 0 })
 
-      .call(() => setTexture("/videos/feature-5.mp4"))
+      .call(() => setTexture("/videos/feature-5.webm"))
       .to(".box5", { opacity: 1, y: 0 });
   }, []);
 

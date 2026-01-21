@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^9.39.2",
@@ -34,6 +34,7 @@
     "globals": "^16.5.0",
     "prettier": "^3.8.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "wrangler": "^4.59.3"
   }
 }
