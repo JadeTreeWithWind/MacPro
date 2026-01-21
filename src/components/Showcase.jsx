@@ -29,7 +29,7 @@ const Showcase = () => {
     <section id="showcase">
       <div className="media">
         <video
-          src="/videos/game.mp4"
+          src="/videos/game.webm"
           autoPlay
           loop
           muted
