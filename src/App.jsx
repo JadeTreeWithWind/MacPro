@@ -8,10 +8,14 @@ import Highlights from "./components/Highlights";
 import Footer from "./components/Footer";
 import { gsap } from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
+import { FEATURE_SEQUENCE } from "./constants";
+import useVideoPreload from "./hooks/useVideoPreload";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
+  useVideoPreload(FEATURE_SEQUENCE);
+
   return (
     <main>
       <NavBar />

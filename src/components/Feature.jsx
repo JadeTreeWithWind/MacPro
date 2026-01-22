@@ -1,11 +1,10 @@
 import { useRef, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Html } from "@react-three/drei";
+import { Html, useVideoTexture } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import clsx from "clsx";
 
 import useMacbookStore from "../store/index.js";
-import useVideoPreload from "../hooks/useVideoPreload.js";
 import useModelAnimation from "../hooks/useModelAnimation.js";
 import StudioLights from "./Three/StudioLights.jsx";
 import MacbookModel from "./models/Macbook.jsx";
@@ -18,7 +17,6 @@ const ModelScroll = () => {
   const { setTexture } = useMacbookStore();
 
   // Use custom hooks
-  useVideoPreload(FEATURE_SEQUENCE);
   useModelAnimation(groupRef, setTexture);
 
   return (
@@ -36,6 +34,11 @@ const ModelScroll = () => {
   );
 };
 
+const PreloadTexture = ({ url }) => {
+  useVideoTexture(url);
+  return null;
+};
+
 const Features = () => {
   return (
     <section id="features">
@@ -43,6 +46,11 @@ const Features = () => {
       <h2>為每個人而生的 AI</h2>
 
       <Canvas id="f-canvas" camera={{}}>
+        <Suspense fallback={null}>
+          {FEATURE_SEQUENCE.map((item) => (
+            <PreloadTexture key={item.videoPath} url={item.videoPath} />
+          ))}
+        </Suspense>
         <StudioLights />
         <ambientLight intensity={0.5} />
         <ModelScroll />
