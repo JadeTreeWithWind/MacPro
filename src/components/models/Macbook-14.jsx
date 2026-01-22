@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import useMacbookStore from "../../store";
-import { noChangeParts } from "../../constants/index.js";
+import { NO_CHANGE_PARTS } from "../../constants/index.js";
 import { Color, SRGBColorSpace } from "three";
 
 export default function MacbookModel14(props) {
@@ -10,14 +10,18 @@ export default function MacbookModel14(props) {
     "/models/macbook-14-transformed.glb",
   );
 
-  const texture = useTexture("/screen.png");
-  texture.colorSpace = SRGBColorSpace;
-  texture.needsUpdate = true;
+  const rawTexture = useTexture("/screen.png");
+  const texture = useMemo(() => {
+    const t = rawTexture.clone();
+    t.colorSpace = SRGBColorSpace;
+    t.needsUpdate = true;
+    return t;
+  }, [rawTexture]);
 
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
-        if (!noChangeParts.includes(child.name)) {
+        if (!NO_CHANGE_PARTS.includes(child.name)) {
           child.material.color = new Color(color);
         }
       }

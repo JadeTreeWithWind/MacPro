@@ -1,23 +1,10 @@
 import { useMediaQuery } from "react-responsive";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import useHighlightsAnimation from "../hooks/useHighlightsAnimation.js";
 
 const Highlights = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
-  useGSAP(() => {
-    gsap.to([".left-column", ".right-column"], {
-      scrollTrigger: {
-        trigger: "#highlights",
-        start: isMobile ? "bottom bottom" : "top center",
-      },
-      y: 0,
-      opacity: 1,
-      stagger: 0.5,
-      duration: 1,
-      ease: "power1.inOut",
-    });
-  });
+  useHighlightsAnimation(isMobile);
 
   return (
     <section id="highlights">

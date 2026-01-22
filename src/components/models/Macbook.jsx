@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import useMacbookStore from "../../store/index.js";
-import { noChangeParts } from "../../constants/index.js";
+import { NO_CHANGE_PARTS } from "../../constants/index.js";
 import { Color } from "three";
 
 export default function MacbookModel(props) {
@@ -15,7 +15,7 @@ export default function MacbookModel(props) {
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
-        if (!noChangeParts.includes(child.name)) {
+        if (!NO_CHANGE_PARTS.includes(child.name)) {
           child.material.color = new Color(color);
         }
       }

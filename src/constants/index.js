@@ -1,4 +1,4 @@
-const navLinks = [
+const NAV_LINKS = [
   { label: "商店" },
   { label: "Mac" },
   { label: "iPhone" },
@@ -7,7 +7,7 @@ const navLinks = [
   { label: "支援" },
 ];
 
-const noChangeParts = [
+const NO_CHANGE_PARTS = [
   "Object_84",
   "Object_37",
   "Object_34",
@@ -24,9 +24,10 @@ const noChangeParts = [
   "Object_52",
   "Object_21",
   "Object_10",
+  "Object_127",
 ];
 
-const performanceImages = [
+const PERFORMANCE_IMAGES = [
   { id: "p1", src: "/performance1.png" },
   { id: "p2", src: "/performance2.png" },
   { id: "p3", src: "/performance3.png" },
@@ -36,7 +37,7 @@ const performanceImages = [
   { id: "p7", src: "/performance7.png" },
 ];
 
-const performanceImgPositions = [
+const PERFORMANCE_IMG_POSITIONS = [
   {
     id: "p1",
     left: 5,
@@ -74,7 +75,7 @@ const performanceImgPositions = [
   },
 ];
 
-const features = [
+const FEATURES = [
   {
     id: 1,
     icon: "/feature-icon1.svg",
@@ -114,7 +115,7 @@ const features = [
   },
 ];
 
-const featureSequence = [
+const FEATURE_SEQUENCE = [
   { videoPath: "/videos/feature-1.webm", boxClass: ".box1", delay: 1 },
   { videoPath: "/videos/feature-2.webm", boxClass: ".box2", delay: 0 },
   { videoPath: "/videos/feature-3.webm", boxClass: ".box3", delay: 0 },
@@ -122,7 +123,7 @@ const featureSequence = [
   { videoPath: "/videos/feature-5.webm", boxClass: ".box5", delay: 0 },
 ];
 
-const footerLinks = [
+const FOOTER_LINKS = [
   { label: "隱私政策", link: "#" },
   { label: "使用條款", link: "#" },
   { label: "銷售政策", link: "#" },
@@ -131,11 +132,11 @@ const footerLinks = [
 ];
 
 export {
-  features,
-  featureSequence,
-  footerLinks,
-  navLinks,
-  noChangeParts,
-  performanceImages,
-  performanceImgPositions,
+  FEATURES,
+  FEATURE_SEQUENCE,
+  FOOTER_LINKS,
+  NAV_LINKS,
+  NO_CHANGE_PARTS,
+  PERFORMANCE_IMAGES,
+  PERFORMANCE_IMG_POSITIONS,
 };
