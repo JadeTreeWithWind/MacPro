@@ -1,85 +1,23 @@
-import { Canvas } from "@react-three/fiber";
-import StudioLights from "./Three/StudioLights.jsx";
-import { features, featureSequence } from "../constants/index.js";
-import clsx from "clsx";
 import { useRef, Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Html, useVideoTexture } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
-import MacbookModel from "./models/Macbook.jsx";
-import { Html } from "@react-three/drei";
+import clsx from "clsx";
+
 import useMacbookStore from "../store/index.js";
-import { useEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
+import useModelAnimation from "../hooks/useModelAnimation.js";
+import StudioLights from "./Three/StudioLights.jsx";
+import MacbookModel from "./models/Macbook.jsx";
+
+import { FEATURES, FEATURE_SEQUENCE } from "../constants/index.js";
 
 const ModelScroll = () => {
   const groupRef = useRef(null);
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const { setTexture } = useMacbookStore();
 
-  // Pre-load all feature videos during component mount
-  useEffect(() => {
-    featureSequence.forEach((feature) => {
-      const v = document.createElement("video");
-
-      Object.assign(v, {
-        src: feature.videoPath,
-        muted: true,
-        playsInline: true,
-        preload: "auto",
-        crossOrigin: "anonymous",
-      });
-
-      v.load();
-    });
-  }, []);
-
-  useGSAP(() => {
-    // 3D MODEL ROTATION ANIMATION
-    const modelTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#f-canvas",
-        start: "top top",
-        end: "bottom  top",
-        scrub: 1,
-        pin: true,
-      },
-    });
-
-    // SYNC THE FEATURE CONTENT
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#f-canvas",
-        start: "top center",
-        end: "bottom  top",
-        scrub: 1,
-      },
-    });
-
-    // 3D SPIN
-    if (groupRef.current) {
-      modelTimeline.to(groupRef.current.rotation, {
-        y: Math.PI * 2,
-        ease: "power1.inOut",
-      });
-    }
-
-    // Content & Texture Sync
-    timeline
-      .call(() => setTexture("/videos/feature-1.webm"))
-      .to(".box1", { opacity: 1, y: 0, delay: 0.5 })
-
-      .call(() => setTexture("/videos/feature-2.webm"))
-      .to(".box2", { opacity: 1, y: 0 })
-
-      .call(() => setTexture("/videos/feature-3.webm"))
-      .to(".box3", { opacity: 1, y: 0 })
-
-      .call(() => setTexture("/videos/feature-4.webm"))
-      .to(".box4", { opacity: 1, y: 0 })
-
-      .call(() => setTexture("/videos/feature-5.webm"))
-      .to(".box5", { opacity: 1, y: 0 });
-  }, []);
+  // Use custom hooks
+  useModelAnimation(groupRef, setTexture);
 
   return (
     <group ref={groupRef}>
@@ -96,6 +34,11 @@ const ModelScroll = () => {
   );
 };
 
+const PreloadTexture = ({ url }) => {
+  useVideoTexture(url);
+  return null;
+};
+
 const Features = () => {
   return (
     <section id="features">
@@ -103,13 +46,18 @@ const Features = () => {
       <h2>為每個人而生的 AI</h2>
 
       <Canvas id="f-canvas" camera={{}}>
+        <Suspense fallback={null}>
+          {FEATURE_SEQUENCE.map((item) => (
+            <PreloadTexture key={item.videoPath} url={item.videoPath} />
+          ))}
+        </Suspense>
         <StudioLights />
         <ambientLight intensity={0.5} />
         <ModelScroll />
       </Canvas>
 
       <div className="absolute inset-0">
-        {features.map((feature, index) => (
+        {FEATURES.map((feature, index) => (
           <div
             key={feature.id}
             className={clsx("box", `box${index + 1}`, feature.styles)}

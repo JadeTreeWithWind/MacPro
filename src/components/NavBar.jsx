@@ -1,30 +1,30 @@
-import { navLinks } from "../constants";
+import { NAV_LINKS } from "../constants";
 
 const NavBar = () => {
-    return (
-        <header>
-            <nav>
-                <img src="/logo.svg" alt="Apple Logo" />
+  return (
+    <header>
+      <nav>
+        <img src="/logo.svg" alt="Apple Logo" />
 
-                <ul>
-                    {navLinks.map(({ label }) => (
-                        <li key={label}>
-                            <a href={label}>{label}</a>
-                        </li>
-                    ))}
-                </ul>
+        <ul>
+          {NAV_LINKS.map(({ label }) => (
+            <li key={label}>
+              <a href={label}>{label}</a>
+            </li>
+          ))}
+        </ul>
 
-                <div className="flex-center gap-3">
-                    <button>
-                        <img src="/search.svg" alt="搜尋" />
-                    </button>
-                    <button>
-                        <img src="/cart.svg" alt="購物車" />
-                    </button>
-                </div>
-            </nav>
-        </header>
-    );
+        <div className="flex-center gap-3">
+          <button>
+            <img src="/search.svg" alt="搜尋" />
+          </button>
+          <button>
+            <img src="/cart.svg" alt="購物車" />
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
 };
 
 export default NavBar;

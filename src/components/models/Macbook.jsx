@@ -1,8 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import useMacbookStore from "../../store/index.js";
-import { noChangeParts } from "../../constants/index.js";
+import { NO_CHANGE_PARTS } from "../../constants/index.js";
 import { Color } from "three";
+
+/*
+ * Separate component to handle video texture loading.
+ * This allows us to use Suspense locally for the screen only,
+ * preventing the entire model from unmounting/remounting when the video changes.
+ */
+function ScreenMaterial({ url }) {
+  const texture = useVideoTexture(url);
+  return <meshBasicMaterial map={texture} toneMapped={false} />;
+}
 
 export default function MacbookModel(props) {
   const { color, texture } = useMacbookStore();
@@ -10,12 +20,10 @@ export default function MacbookModel(props) {
     "/models/macbook-transformed.glb",
   );
 
-  const screen = useVideoTexture(texture);
-
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
-        if (!noChangeParts.includes(child.name)) {
+        if (!NO_CHANGE_PARTS.includes(child.name)) {
           child.material.color = new Color(color);
         }
       }
@@ -110,7 +118,9 @@ export default function MacbookModel(props) {
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
-        <meshBasicMaterial map={screen} />
+        <Suspense fallback={<meshBasicMaterial color="black" />}>
+          <ScreenMaterial url={texture} />
+        </Suspense>
       </mesh>
       <mesh
         geometry={nodes.Object_127.geometry}

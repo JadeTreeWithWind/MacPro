@@ -1,4 +1,4 @@
-import { footerLinks } from "../constants/index.js";
+import { FOOTER_LINKS } from "../constants/index.js";
 
 const Footer = () => {
   return (
@@ -28,7 +28,7 @@ const Footer = () => {
         <p>Copyright © 2025 Apple Inc. 保留一切權利。</p>
 
         <ul>
-          {footerLinks.map(({ label, link }) => (
+          {FOOTER_LINKS.map(({ label, link }) => (
             <li key={label}>
               <a href={link}>{label}</a>
             </li>

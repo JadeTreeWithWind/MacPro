@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import {
-  performanceImages,
-  performanceImgPositions,
+  PERFORMANCE_IMAGES,
+  PERFORMANCE_IMG_POSITIONS,
 } from "../constants/index.js";
 import { useMediaQuery } from "react-responsive";
 
@@ -49,7 +49,7 @@ const Performance = () => {
       });
 
       // Position Each Performance Image
-      performanceImgPositions.forEach((item) => {
+      PERFORMANCE_IMG_POSITIONS.forEach((item) => {
         if (item.id === "p5") return;
 
         const selector = `.${item.id}`;
@@ -72,7 +72,7 @@ const Performance = () => {
       <h2>飛速玩轉你的 App</h2>
 
       <div className="wrapper">
-        {performanceImages.map((item, index) => (
+        {PERFORMANCE_IMAGES.map((item, index) => (
           <img
             key={index}
             src={item.src}
