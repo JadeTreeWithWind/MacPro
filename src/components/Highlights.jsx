@@ -1,6 +1,10 @@
 import { useMediaQuery } from "react-responsive";
 import useHighlightsAnimation from "../hooks/useHighlightsAnimation.js";
 
+/**
+ * Highlights Section.
+ * Displays grid of key features with animations.
+ */
 const Highlights = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 

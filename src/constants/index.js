@@ -140,3 +140,13 @@ export {
   PERFORMANCE_IMAGES,
   PERFORMANCE_IMG_POSITIONS,
 };
+
+export const MACBOOK_COLORS = {
+  SILVER: "#d4d4d4",
+  SPACE_BLACK: "#2e2c2e",
+};
+
+export const SCREEN_SIZES = {
+  SIZE_14: 0.06,
+  SIZE_16: 0.08,
+};

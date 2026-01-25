@@ -1,14 +1,34 @@
-import useMacbookStore from "../store";
+import { useMediaQuery } from "react-responsive";
 import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
+import useMacbookStore from "../store";
+import { MACBOOK_COLORS, SCREEN_SIZES } from "../constants";
 import StudioLights from "./Three/StudioLights";
 import ModelSwitcher from "./Three/ModelSwitcher";
-import { useMediaQuery } from "react-responsive";
 
+/**
+ * ProductViewer Component
+ * Allows users to customize and view the Macbook Pro model in 3D.
+ */
 const ProductViewer = () => {
   const { color, scale, setColor, setScale } = useMacbookStore();
-
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+
+  /**
+   * Updates the model color.
+   * @param {string} newColor
+   */
+  const handleColorChange = (newColor) => {
+    setColor(newColor);
+  };
+
+  /**
+   * Updates the model size/scale.
+   * @param {number} newScale
+   */
+  const handleScaleChange = (newScale) => {
+    setScale(newScale);
+  };
 
   return (
     <section id="product-viewer">
@@ -16,7 +36,7 @@ const ProductViewer = () => {
       <div className="controls">
         <p className="info">
           Macbook Pro
-          <span>{scale === 0.06 ? " 14吋 " : " 16吋 "}</span>
+          <span>{scale === SCREEN_SIZES.SIZE_14 ? " 14吋 " : " 16吋 "}</span>
           <span>{color === "#adb5db" ? "銀色" : "太空黑"}</span>
         </p>
         <div className="flex-center mt-5 gap-5">
@@ -24,23 +44,23 @@ const ProductViewer = () => {
             <div
               className={clsx(
                 "bg-neutral-300",
-                color === "#d4d4d4" && "active",
+                color === MACBOOK_COLORS.SILVER && "active",
               )}
-              onClick={() => setColor("#d4d4d4")}
+              onClick={() => handleColorChange(MACBOOK_COLORS.SILVER)}
             ></div>
             <div
               className={clsx(
                 "bg-neutral-900",
-                color === "#2e2c2e" && "active",
+                color === MACBOOK_COLORS.SPACE_BLACK && "active",
               )}
-              onClick={() => setColor("#2e2c2e")}
+              onClick={() => handleColorChange(MACBOOK_COLORS.SPACE_BLACK)}
             ></div>
           </div>
           <div className="size-control">
             <div
-              onClick={() => setScale(0.06)}
+              onClick={() => handleScaleChange(SCREEN_SIZES.SIZE_14)}
               className={clsx(
-                scale === 0.06
+                scale === SCREEN_SIZES.SIZE_14
                   ? "bg-white text-black"
                   : "bg-transparent text-white",
               )}
@@ -48,9 +68,9 @@ const ProductViewer = () => {
               <p>14吋</p>
             </div>
             <div
-              onClick={() => setScale(0.08)}
+              onClick={() => handleScaleChange(SCREEN_SIZES.SIZE_16)}
               className={clsx(
-                scale === 0.08
+                scale === SCREEN_SIZES.SIZE_16
                   ? "bg-white text-black"
                   : "bg-transparent text-white",
               )}

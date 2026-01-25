@@ -1,13 +1,14 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Handles the GSAP animations for the Macbook Pro model and feature text sync.
- * @param {React.RefObject} groupRef - Reference to the 3D model group
- * @param {Function} setTexture - Function to update the model texture
+ *
+ * Synchronizes 3D model rotation and text opacity updates with scroll position.
+ * Relies on DOM elements with classes .box1 to .box5.
+ *
+ * @param {React.MutableRefObject<THREE.Group>} groupRef - Reference to the 3D model group to rotate
+ * @param {Function} setTexture - State setter from store to update video texture on scroll
  */
 const useModelAnimation = (groupRef, setTexture) => {
   useGSAP(() => {

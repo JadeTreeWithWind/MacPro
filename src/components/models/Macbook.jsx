@@ -1,19 +1,25 @@
-import { useEffect, Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
+import { Color } from "three";
 import useMacbookStore from "../../store/index.js";
 import { NO_CHANGE_PARTS } from "../../constants/index.js";
-import { Color } from "three";
 
-/*
- * Separate component to handle video texture loading.
- * This allows us to use Suspense locally for the screen only,
- * preventing the entire model from unmounting/remounting when the video changes.
+/**
+ * Separate component to handle video texture loading using Suspense.
+ * @param {Object} props - Component props
+ * @param {string} props.url - The video URL
  */
 function ScreenMaterial({ url }) {
   const texture = useVideoTexture(url);
   return <meshBasicMaterial map={texture} toneMapped={false} />;
 }
 
+/**
+ * 3D Model of Macbook Pro.
+ * Updates material colors based on store state and plays video on screen.
+ *
+ * @param {Object} props - Props passed to the group
+ */
 export default function MacbookModel(props) {
   const { color, texture } = useMacbookStore();
   const { nodes, materials, scene } = useGLTF(
@@ -22,10 +28,8 @@ export default function MacbookModel(props) {
 
   useEffect(() => {
     scene.traverse((child) => {
-      if (child.isMesh) {
-        if (!NO_CHANGE_PARTS.includes(child.name)) {
-          child.material.color = new Color(color);
-        }
+      if (child.isMesh && !NO_CHANGE_PARTS.includes(child.name)) {
+        child.material.color = new Color(color);
       }
     });
   }, [color, scene]);
